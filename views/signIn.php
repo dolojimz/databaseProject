@@ -10,14 +10,10 @@ if($link === false){
 
 
 
-$FirstName = $_POST['FirstName'] ?? '';
 $UserName = $_POST['UserName'] ?? '';
-$Email = $_POST['Email'] ?? '';
 
 
-
-// insertion query
-$sql = "INSERT INTO user (FirstName, UserName, Email) VALUES ('$FirstName', '$UserName', '$Email')";
+$sql = "SELECT * FROM user WHERE username = '".$UserName."'";
 
 if(mysqli_query($link, $sql)){
     session_start();
