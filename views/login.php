@@ -21,21 +21,21 @@ body, html {height: 100%}
   <div class="w3-display-topleft w3-padding-large w3-xlarge">
     Fantasy Football
   </div>
-  <form action="action_page.php">
   <div class="container">
-    <label for="newUname"><b>New User?</b></label>
-    <input type="text" placeholder="Name" name="newUname" required>
-
-    <label for="retUname"><b>Returning User?</b></label>
-    <input type="password" placeholder="Name" name="retUname" required>
-
-    <button type="submit">Login</button>
+    <form action="action_page.php">
+        <label for="newUname"><b>New User?</b></label>
+        <input type="text" placeholder="Name" name="newUname" required>
+    </form>
+    <form action="action_page.php">
+        <label for="retUname"><b>Returning User?</b></label>
+        <input type="text" placeholder="Name" name="retUname" required>
+    </form>
+        <button type="submit">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
 </div>
 
-</form>
   <!-- <div class="w3-display-bottomleft w3-padding-large">
     Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
   </div> -->
