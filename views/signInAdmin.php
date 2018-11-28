@@ -4,26 +4,34 @@
 server with default setting (user 'root' with no password) */
 $link = mysqli_connect("localhost", "root", "", "fantasy");
  
-if($link === false){
+if($link == false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-
  
 
-$UserName = $_POST['UserName'] ?? '';
+$UserName = $_REQUEST['username'] ?? '';
 
 
-$sql = "SELECT * FROM user WHERE username = '".$UserName."'";
+$sql = "SELECT * FROM `admin` WHERE username = '".$UserName."'";
+$result = mysqli_query($link, $sql);
 
 if(mysqli_query($link, $sql)){
-    session_start();
-
-    $_SESSION['username'] = $UserName;
-    $_SESSION['loggedIn'] = true;
     
-    //this redirects to the member homepage
-    header("location: http://localhost/databaseProject/views/index.php");    
+    if(mysqli_num_rows($result)){
+        session_start();
 
+        $_SESSION['username'] = $UserName;
+        $_SESSION['loggedIn'] = true;
+    
+        //this redirects to the member homepage
+        echo "<script type='text/javascript'>alert('$UserName');</script>";
+        
+        header("location: http://localhost/databaseProject/views/index.php"); 
+    }
+    else{
+        echo "Wrong Credentials";
+    }
+    
     } else{
         
     header("Location: sign-up.html?wrong=2"); // there was an error
