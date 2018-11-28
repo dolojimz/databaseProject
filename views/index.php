@@ -18,10 +18,36 @@ body, html {height: 100%}
 </style> -->
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-  <div class="w3-display-topleft w3-padding-large w3-xlarge">
-    Fantasy Football
-  </div>
-  <form action="action_page.php">
+    <h1 align="center"><b>Hello {Name}</b></h1>
+  <div class="row">
+      <div class="column">
+          <h2><b>{Your Team}</b></h2>
+          <table>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>{Info... etc}</th>
+          </tr>
+          <tr>
+            <td>{Info}</td>
+            <td>{Info}</td>
+            <td>{Info}</td>
+            <td>{Info}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="column">
+          <div class="row">
+
+
+          </div>
+      </div>
+    </div>
+
+
+
+  <!-- <form action="action_page.php">
   <div class="container">
     <label for="newUname" style="color: black;"><b>New User?</b></label>
     <input type="text" placeholder="Name" name="newUname" required>
@@ -35,7 +61,7 @@ body, html {height: 100%}
     </label>
 </div>
 
-</form>
+</form> -->
   <!-- <div class="w3-display-bottomleft w3-padding-large">
     Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
   </div> -->
