@@ -23,10 +23,10 @@ body, html {height: 100%}
   </div>
   <form action="action_page.php">
   <div class="container">
-    <label for="newUname"><b>New User?</b></label>
+    <label for="newUname" style="color: black;"><b>New User?</b></label>
     <input type="text" placeholder="Name" name="newUname" required>
 
-    <label for="retUname"><b>Returning User?</b></label>
+    <label for="retUname" style="color: black;"><b>Returning User?</b></label>
     <input type="password" placeholder="Name" name="retUname" required>
 
     <button type="submit">Login</button>

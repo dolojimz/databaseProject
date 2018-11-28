@@ -18,19 +18,22 @@ body, html {height: 100%}
 </style> -->
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge" style="color: black;">
     Fantasy Football
   </div>
-  <div class="container">
-    <form action="action_page.php">
-        <label for="newUname"><b>New User?</b></label>
-        <input type="text" placeholder="Name" name="newUname" required>
-    </form>
-    <form action="action_page.php">
-        <label for="retUname"><b>Returning User?</b></label>
-        <input type="text" placeholder="Name" name="retUname" required>
-    </form>
+  <div class="container" >
+    <form action="signIn1.php">
+        <label for="newUname" style="color: black;"><b>Returning User?</b></label>
+        <input type="text" placeholder="User Name" name="UserName" required>
         <button type="submit">Login</button>
+    </form>
+    <form action="newUser.php">
+        <label for="retUname" style="color: black;"><b>New User?</b></label>
+        <input type="text" placeholder="Name" name="FirstName" required>
+        <input type="text" placeholder="User Name" name="UserName" required>
+        <input type="text" placeholder="Email" name="Email" required>
+        <button type="submit">Login</button>
+    </form>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
