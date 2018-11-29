@@ -36,7 +36,7 @@ body, html {height: 100%}
     <h1 align="center"><b>Hello  <?php echo $_SESSION['username']; ?></b></h1>
     <div class="container3">
   <div class="row">
-      <div class="column">
+      <div class="column" style="background-color:rgba(0, 0, 0, 0.7);">
           <h2><b><?php echo $_SESSION['username']; ?>'s Team</b></h2>
           <table>
           <tr>
@@ -52,18 +52,86 @@ body, html {height: 100%}
         $add = $_REQUEST['ADD'] ?? '';
 
         $count = 0;
-        
+              
         $sqlM = "SELECT * FROM `player` WHERE player_ID = ".$add."";
         $resultM = mysqli_query($link, $sqlM);
         $rowM = mysqli_fetch_array($resultM);
               
+        
+        $sqlA = "SELECT * FROM `fantasy_team` WHERE player_ID = ".$UserName."";
+
+              
+        //https://stackoverflow.com/questions/8088516/check-sql-database-if-value-exists-and-then-return-value-if-it-does
+        if($resultA = mysqli_query($link, $sqlA) && mysql_num_rows($resultA) > 0){
+            echo "<script type='text/javascript'>alert('hey');</script>";
+            $conf = "East";
+            if($rowM['position'] == "kicker"){
+                $sql = "INSERT INTO `fantasy_team` (team_name, kicker, username, conf_name) VALUES ('$UserName', '$add', '$UserName', '$conf')";
+                $resultN = mysqli_query($link, $sql);
+              echo'<tr>';
+                echo'<td>'.$rowM['player_ID'].'</td>';
+                echo'<td>'.$rowM['name'].'</td>';
+                echo'<td>'.$rowM['position'].'</td>';
+                echo'<td>'.$rowM['team'].'</td>';
+                echo'<td>'.$rowM['avg_points'].'</td>';
+              echo'</tr>';
+            }
+            if($rowM['position'] == "QB"){
+                $sql = "INSERT INTO `fantasy_team` (team_name, QB, username, conf_name) VALUES ('$UserName', '$add', '$UserName', '$conf')";
+                $resultN = mysqli_query($link, $sql);
+              echo'<tr>';
+                echo'<td>'.$rowM['player_ID'].'</td>';
+                echo'<td>'.$rowM['name'].'</td>';
+                echo'<td>'.$rowM['position'].'</td>';
+                echo'<td>'.$rowM['team'].'</td>';
+                echo'<td>'.$rowM['avg_points'].'</td>';
+              echo'</tr>';
+            }
+            if($rowM['position'] == "defense"){
+                $sql = "INSERT INTO `fantasy_team` (team_name, defense, username, conf_name) VALUES ('$UserName', '$add', '$UserName', '$conf')";
+                $resultN = mysqli_query($link, $sql);
+              echo'<tr>';
+                echo'<td>'.$rowM['player_ID'].'</td>';
+                echo'<td>'.$rowM['name'].'</td>';
+                echo'<td>'.$rowM['position'].'</td>';
+                echo'<td>'.$rowM['team'].'</td>';
+                echo'<td>'.$rowM['avg_points'].'</td>';
+              echo'</tr>';                
+                
+            }
+            if($rowM['position'] == "WR"){
+                $sql = "INSERT INTO `fantasy_team` (team_name, WR, username, conf_name) VALUES ('$UserName', '$add', '$UserName', '$conf')";
+                $resultN = mysqli_query($link, $sql);
+              echo'<tr>';
+                echo'<td>'.$rowM['player_ID'].'</td>';
+                echo'<td>'.$rowM['name'].'</td>';
+                echo'<td>'.$rowM['position'].'</td>';
+                echo'<td>'.$rowM['team'].'</td>';
+                echo'<td>'.$rowM['avg_points'].'</td>';
+              echo'</tr>';                
+                
+                
+            }
+            if($rowM['position'] == "RB"){
+                $sql = "INSERT INTO `fantasy_team` (team_name, RB, username, conf_name) VALUES ('$UserName', '$add', '$UserName', '$conf')";
+                $resultN = mysqli_query($link, $sql);
+              echo'<tr>';
+                echo'<td>'.$rowM['player_ID'].'</td>';
+                echo'<td>'.$rowM['name'].'</td>';
+                echo'<td>'.$rowM['position'].'</td>';
+                echo'<td>'.$rowM['team'].'</td>';
+                echo'<td>'.$rowM['avg_points'].'</td>';
+              echo'</tr>';                
+                
+                
+            }
+        }else{
               
             $sql = "SELECT kicker FROM `fantasy_team` WHERE username = '".$UserName."'";
             $result = mysqli_query($link, $sql);
             $row = mysqli_fetch_array($result);
             $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['kicker']."";
-            $result1 = mysqli_query($link, $sql1);
-            $row1 = mysqli_fetch_array($result1);
+
               
         if($rowM['position'] == "kicker"){
             $sql = "UPDATE`fantasy_team` SET kicker = '".$add."' WHERE username = '".$UserName."'";
@@ -74,6 +142,8 @@ body, html {height: 100%}
             $count = 1;
             
         }
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -81,14 +151,13 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-              
+        }
               
             $sql = "SELECT QB FROM `fantasy_team` WHERE username = '".$UserName."'";
             $result = mysqli_query($link, $sql);
             $row = mysqli_fetch_array($result);
             $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['QB']."";
-            $result1 = mysqli_query($link, $sql1);
-            $row1 = mysqli_fetch_array($result1);
+
         
         if($rowM['position'] == "QB"){
               
@@ -100,6 +169,8 @@ body, html {height: 100%}
             $count = 1;
             
         }
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -107,13 +178,12 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-        
+        }
             $sql = "SELECT defense FROM `fantasy_team` WHERE username = '".$UserName."'";
             $result = mysqli_query($link, $sql);
             $row = mysqli_fetch_array($result);
             $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['defense']."";
-            $result1 = mysqli_query($link, $sql1);
-            $row1 = mysqli_fetch_array($result1);
+
         if($rowM['position'] == "defense"){      
 
             $sql = "UPDATE`fantasy_team` SET defense = '".$add."' WHERE username = '".$UserName."'";
@@ -124,6 +194,8 @@ body, html {height: 100%}
             $count = 1;
             
         }
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -131,13 +203,12 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-              
+        }
             $sql = "SELECT WR FROM `fantasy_team` WHERE username = '".$UserName."'";
             $result = mysqli_query($link, $sql);
             $row = mysqli_fetch_array($result);
             $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['WR']."";
-            $result1 = mysqli_query($link, $sql1);
-            $row1 = mysqli_fetch_array($result1);
+
         if($rowM['position'] == "WR"){      
 
             $sql = "UPDATE`fantasy_team` SET WR = '".$add."' WHERE username = '".$UserName."'";
@@ -148,6 +219,8 @@ body, html {height: 100%}
             $count = 1;
             
         }
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -155,13 +228,12 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-        
+        }
             $sql = "SELECT RB FROM `fantasy_team` WHERE username = '".$UserName."'";
             $result = mysqli_query($link, $sql);
             $row = mysqli_fetch_array($result);
             $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['RB']."";
-            $result1 = mysqli_query($link, $sql1);
-            $row1 = mysqli_fetch_array($result1);
+
         
         if($rowM['position'] == "RB"){
 
@@ -173,6 +245,8 @@ body, html {height: 100%}
             $row1 = mysqli_fetch_array($result1);
             $count = 1;
         }
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -180,13 +254,12 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-
+        }
             $sql = "SELECT bench FROM `fantasy_team` WHERE username = '".$UserName."'";
             $result = mysqli_query($link, $sql);
             $row = mysqli_fetch_array($result);
             $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['bench']."";
-            $result1 = mysqli_query($link, $sql1);
-            $row1 = mysqli_fetch_array($result1);
+
               
         if($count == 0){      
             $sql = "UPDATE`fantasy_team` SET bench = '".$add."' WHERE username = '".$UserName."'";
@@ -197,6 +270,8 @@ body, html {height: 100%}
             $count = 1;
             
         }
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -204,10 +279,12 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
+        }
+        }
         ?>
         </table>
       </div>
-      <div class="column">
+      <div class="column" style="background-color:rgba(0, 0, 0, 0.7);">
           <h3><b>Search Players</b></h2>
               <form action="indexID.php">
                   <input type="text" placeholder="ID" name="ID" required><br>

@@ -36,7 +36,7 @@ body, html {height: 100%}
     <h1 align="center"><b>Hello  <?php echo $_SESSION['username']; ?></b></h1>
     <div class="container3">
   <div class="row">
-      <div class="column">
+      <div class="column" style="background-color:rgba(0, 0, 0, 0.7);">
           <h2><b><?php echo $_SESSION['username']; ?>'s Team</b></h2>
           <table>
           <tr>
@@ -52,8 +52,8 @@ body, html {height: 100%}
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
         $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['kicker']."";
-        $result1 = mysqli_query($link, $sql1);
-        $row1 = mysqli_fetch_array($result1);
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -61,13 +61,14 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
+        }
               
         $sql = "SELECT QB FROM `fantasy_team` WHERE username = '".$UserName."'";
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
         $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['QB']."";
-        $result1 = mysqli_query($link, $sql1);
-        $row1 = mysqli_fetch_array($result1);
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -75,13 +76,14 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-        
+        }
+              
         $sql = "SELECT defense FROM `fantasy_team` WHERE username = '".$UserName."'";
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
         $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['defense']."";
-        $result1 = mysqli_query($link, $sql1);
-        $row1 = mysqli_fetch_array($result1);
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -89,13 +91,14 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
+        }
               
         $sql = "SELECT WR FROM `fantasy_team` WHERE username = '".$UserName."'";
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
         $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['WR']."";
-        $result1 = mysqli_query($link, $sql1);
-        $row1 = mysqli_fetch_array($result1);
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -103,13 +106,13 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-              
+        }
         $sql = "SELECT RB FROM `fantasy_team` WHERE username = '".$UserName."'";
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
         $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['RB']."";
-        $result1 = mysqli_query($link, $sql1);
-        $row1 = mysqli_fetch_array($result1);
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -117,13 +120,14 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
+        }
               
         $sql = "SELECT bench FROM `fantasy_team` WHERE username = '".$UserName."'";
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
         $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['bench']."";
-        $result1 = mysqli_query($link, $sql1);
-        $row1 = mysqli_fetch_array($result1);
+        if($result1 = mysqli_query($link, $sql1)){
+            $row1 = mysqli_fetch_array($result1);
           echo'<tr>';
             echo'<td>'.$row1['player_ID'].'</td>';
             echo'<td>'.$row1['name'].'</td>';
@@ -131,10 +135,11 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
+        }
         ?>
         </table>
       </div>
-      <div class="column">
+      <div class="column" style="background-color:rgba(0, 0, 0, 0.7);">
           <h3><b>Search Players</b></h2>
               <form action="indexID.php">
                   <input type="text" placeholder="ID" name="ID" required><br>

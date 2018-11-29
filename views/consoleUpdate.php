@@ -35,8 +35,8 @@ body, html {height: 100%}
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
     <h1 align="center"><b>Admin Page</b></h1>
     <div class="container3">
-  <div class="row">
-      <div class="column">
+  <div class="row" >
+      <div class="column" style="background-color:rgba(0, 0, 0, 0.7);">
           <h3><b>Update Player</b></h3>
           <form action="consoleUpdate.php">
               <input type="text" placeholder="Player ID" name="playerId"><br>
@@ -78,7 +78,7 @@ body, html {height: 100%}
           </tr>
         </table>
       </div>
-      <div class="column">
+      <div class="column" style="background-color:rgba(0, 0, 0, 0.7);">
           <h3><b>Add Player</b></h2>
               <form action="consoleAdd.php">
                   <input type="text" placeholder="Player ID" name="playerId"><br>
