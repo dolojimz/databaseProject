@@ -3,7 +3,7 @@
     server with default setting (user 'root' with no password) */
 
     session_start();
-    
+
 
     $link = mysqli_connect("localhost", "root", "", "fantasy");
 
@@ -32,7 +32,7 @@ body, html {height: 100%}
 }
 </style> -->
 
-<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+<div class="bgimg w3-display-container w3-animate-opacity">
     <h1 align="center"><b>Hello  <?php echo $_SESSION['username']; ?></b></h1>
     <div class="container3">
   <div class="row">
@@ -61,7 +61,7 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-              
+
         $sql = "SELECT QB FROM `fantasy_team` WHERE username = '".$UserName."'";
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
@@ -75,7 +75,7 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-        
+
         $sql = "SELECT defense FROM `fantasy_team` WHERE username = '".$UserName."'";
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
@@ -89,7 +89,7 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-              
+
         $sql = "SELECT WR FROM `fantasy_team` WHERE username = '".$UserName."'";
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
@@ -103,7 +103,7 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-              
+
         $sql = "SELECT RB FROM `fantasy_team` WHERE username = '".$UserName."'";
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
@@ -117,7 +117,7 @@ body, html {height: 100%}
             echo'<td>'.$row1['team'].'</td>';
             echo'<td>'.$row1['avg_points'].'</td>';
           echo'</tr>';
-              
+
         $sql = "SELECT bench FROM `fantasy_team` WHERE username = '".$UserName."'";
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
@@ -153,15 +153,15 @@ body, html {height: 100%}
                 <th>Average Points</th>
                 <th>Add</th>
               </tr>
-                  
+
               <?php
-                  
+
                 $pos = $_REQUEST['position'] ?? '';
 
 
                 $sql1 = "SELECT * FROM `player` WHERE position = '".$pos."' ORDER BY avg_points DESC";
                 $result1 = mysqli_query($link, $sql1);
-                  
+
                 while($row1 = mysqli_fetch_array($result1)){
                   echo'<tr>';
                     echo'<td>'.$row1['player_ID'].'</td>';
@@ -175,7 +175,7 @@ body, html {height: 100%}
                     </form></td>';
                   echo'</tr>';
                 }
-                
+
                 ?>
             </table>
 

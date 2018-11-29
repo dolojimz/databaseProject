@@ -3,7 +3,7 @@
     server with default setting (user 'root' with no password) */
 
     session_start();
-    
+
 
     $link = mysqli_connect("localhost", "root", "", "fantasy");
 
@@ -32,9 +32,9 @@ body, html {height: 100%}
 }
 </style> -->
 
-<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+<div class="bgimg w3-display-container w3-animate-opacity">
     <h1 align="center"><b>Admin Page</b></h1>
-    <div class="container3">
+    <div class="container4">
   <div class="row">
       <div class="column">
           <h3><b>Update Player</b></h3>
@@ -52,10 +52,10 @@ body, html {height: 100%}
             <th>Average Points</th>
           </tr>
           <tr>
-        <?php 
+        <?php
         $pid = $_REQUEST['playerId'] ?? '';
         $points = $_REQUEST['points'] ?? '';
-              
+
         $sql = "UPDATE `player` SET avg_points = '".$points."' WHERE player_ID = '".$pid."'";
 
         if(mysqli_query($link, $sql)){
@@ -63,7 +63,7 @@ body, html {height: 100%}
             $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$pid."";
             $result1 = mysqli_query($link, $sql1);
             $row1 = mysqli_fetch_array($result1);
-            
+
             if(mysqli_query($link, $sql1)){
                 echo'<tr>';
                     echo'<td>'.$row1['player_ID'].'</td>';
