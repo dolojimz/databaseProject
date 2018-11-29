@@ -19,17 +19,20 @@ body, html {height: 100%}
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
     <h1 align="center"><b>Hello {Name}</b></h1>
+    <div class="container3">
   <div class="row">
       <div class="column">
           <h2><b>{Your Team}</b></h2>
           <table>
           <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Age</th>
-            <th>{Info... etc}</th>
+            <th>Player ID</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Team</th>
+            <th>Average Points</th>
           </tr>
           <tr>
+            <td>{Info}</td>
             <td>{Info}</td>
             <td>{Info}</td>
             <td>{Info}</td>
@@ -38,13 +41,37 @@ body, html {height: 100%}
         </table>
       </div>
       <div class="column">
-          <div class="row">
-
-
-          </div>
+          <h3><b>Search Players</b></h2>
+              <form action="/action_page.php">
+                  <input type="text" placeholder="ID" name="id"><br>
+                  <input type="submit" value="Search ID">
+              </form>
+              <form action="/action_page.php">
+                  <input type="text" placeholder="Position" name="position"><br>
+                  <input type="submit" value="Search Position">
+              </form>
+              <table>
+              <tr>
+                <th>Player ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Team</th>
+                <th>Average Points</th>
+              </tr>
+              <tr>
+                <td>{Info}</td>
+                <td>{Info}</td>
+                <td>{Info}</td>
+                <td>{Info}</td>
+                <td>{Info}</td>
+              </tr>
+            </table>
+            <form action="/action_page.php">
+                <input type="submit" value="Sort Players">
+            </form>
       </div>
     </div>
-
+</div>
 
 
   <!-- <form action="action_page.php">

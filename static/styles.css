@@ -12,6 +12,10 @@ form {
     border: 3px solid #f1f1f1;
 }
 
+/* .row {
+    background-color: #FFFFFF;
+} */
+
 /* Full-width inputs */
 input[type=text], input[type=password] {
     width: 100%;
@@ -83,6 +87,22 @@ span.psw {
     padding-top: 16px;
 }
 
+/* .row {
+    background-color: black;
+    opacity: 0.5;
+} */
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* .column2 {
+    float: right;
+    width: 50%;
+} */
+
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
@@ -95,6 +115,6 @@ span.psw {
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid red;
     border-collapse: collapse;
 }
