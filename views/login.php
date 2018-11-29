@@ -17,7 +17,7 @@ body, html {height: 100%}
 }
 </style> -->
 
-<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+<div class="bgimg w3-display-container w3-animate-opacity">
   <div class="w3-display-topleft w3-padding-large w3-xlarge" style="color: black;">
     Fantasy Football
   </div>
@@ -43,6 +43,4 @@ body, html {height: 100%}
     Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
   </div> -->
 </div>
-
-</body>
 </html>
