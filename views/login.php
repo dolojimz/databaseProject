@@ -32,7 +32,7 @@ body, html {height: 100%}
         <input type="text" placeholder="Name" name="FirstName" required>
         <input type="text" placeholder="User Name" name="UserName" required>
         <input type="text" placeholder="Email" name="Email" required>
-        <button type="submit">Login</button>
+        <button type="submit">Create Profile and Login</button>
     </form>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me

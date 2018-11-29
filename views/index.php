@@ -1,3 +1,18 @@
+<?php
+    /* Attempt MySQL server connection. Assuming you are running MySQL
+    server with default setting (user 'root' with no password) */
+
+    session_start();
+    
+
+    $link = mysqli_connect("localhost", "root", "", "fantasy");
+
+    if($link == false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <!-- <title>W3.CSS Template</title> -->
@@ -18,11 +33,11 @@ body, html {height: 100%}
 </style> -->
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-    <h1 align="center"><b>Hello {Name}</b></h1>
+    <h1 align="center"><b>Hello  <?php echo $_SESSION['username']; ?></b></h1>
     <div class="container3">
   <div class="row">
       <div class="column">
-          <h2><b>{Your Team}</b></h2>
+          <h2><b><?php echo $_SESSION['username']; ?>'s Team</b></h2>
           <table>
           <tr>
             <th>Player ID</th>
@@ -31,13 +46,92 @@ body, html {height: 100%}
             <th>Team</th>
             <th>Average Points</th>
           </tr>
-          <tr>
-            <td>{Info}</td>
-            <td>{Info}</td>
-            <td>{Info}</td>
-            <td>{Info}</td>
-            <td>{Info}</td>
-          </tr>
+        <?php
+        $UserName = $_SESSION['username'];
+        $sql = "SELECT kicker FROM `fantasy_team` WHERE username = '".$UserName."'";
+        $result = mysqli_query($link, $sql);
+        $row = mysqli_fetch_array($result);
+        $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['kicker']."";
+        $result1 = mysqli_query($link, $sql1);
+        $row1 = mysqli_fetch_array($result1);
+          echo'<tr>';
+            echo'<td>'.$row1['player_ID'].'</td>';
+            echo'<td>'.$row1['name'].'</td>';
+            echo'<td>'.$row1['position'].'</td>';
+            echo'<td>'.$row1['team'].'</td>';
+            echo'<td>'.$row1['avg_points'].'</td>';
+          echo'</tr>';
+              
+        $sql = "SELECT QB FROM `fantasy_team` WHERE username = '".$UserName."'";
+        $result = mysqli_query($link, $sql);
+        $row = mysqli_fetch_array($result);
+        $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['QB']."";
+        $result1 = mysqli_query($link, $sql1);
+        $row1 = mysqli_fetch_array($result1);
+          echo'<tr>';
+            echo'<td>'.$row1['player_ID'].'</td>';
+            echo'<td>'.$row1['name'].'</td>';
+            echo'<td>'.$row1['position'].'</td>';
+            echo'<td>'.$row1['team'].'</td>';
+            echo'<td>'.$row1['avg_points'].'</td>';
+          echo'</tr>';
+        
+        $sql = "SELECT defense FROM `fantasy_team` WHERE username = '".$UserName."'";
+        $result = mysqli_query($link, $sql);
+        $row = mysqli_fetch_array($result);
+        $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['defense']."";
+        $result1 = mysqli_query($link, $sql1);
+        $row1 = mysqli_fetch_array($result1);
+          echo'<tr>';
+            echo'<td>'.$row1['player_ID'].'</td>';
+            echo'<td>'.$row1['name'].'</td>';
+            echo'<td>'.$row1['position'].'</td>';
+            echo'<td>'.$row1['team'].'</td>';
+            echo'<td>'.$row1['avg_points'].'</td>';
+          echo'</tr>';
+              
+        $sql = "SELECT WR FROM `fantasy_team` WHERE username = '".$UserName."'";
+        $result = mysqli_query($link, $sql);
+        $row = mysqli_fetch_array($result);
+        $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['WR']."";
+        $result1 = mysqli_query($link, $sql1);
+        $row1 = mysqli_fetch_array($result1);
+          echo'<tr>';
+            echo'<td>'.$row1['player_ID'].'</td>';
+            echo'<td>'.$row1['name'].'</td>';
+            echo'<td>'.$row1['position'].'</td>';
+            echo'<td>'.$row1['team'].'</td>';
+            echo'<td>'.$row1['avg_points'].'</td>';
+          echo'</tr>';
+              
+        $sql = "SELECT RB FROM `fantasy_team` WHERE username = '".$UserName."'";
+        $result = mysqli_query($link, $sql);
+        $row = mysqli_fetch_array($result);
+        $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['RB']."";
+        $result1 = mysqli_query($link, $sql1);
+        $row1 = mysqli_fetch_array($result1);
+          echo'<tr>';
+            echo'<td>'.$row1['player_ID'].'</td>';
+            echo'<td>'.$row1['name'].'</td>';
+            echo'<td>'.$row1['position'].'</td>';
+            echo'<td>'.$row1['team'].'</td>';
+            echo'<td>'.$row1['avg_points'].'</td>';
+          echo'</tr>';
+              
+        $sql = "SELECT bench FROM `fantasy_team` WHERE username = '".$UserName."'";
+        $result = mysqli_query($link, $sql);
+        $row = mysqli_fetch_array($result);
+        $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['bench']."";
+        $result1 = mysqli_query($link, $sql1);
+        $row1 = mysqli_fetch_array($result1);
+          echo'<tr>';
+            echo'<td>'.$row1['player_ID'].'</td>';
+            echo'<td>'.$row1['name'].'</td>';
+            echo'<td>'.$row1['position'].'</td>';
+            echo'<td>'.$row1['team'].'</td>';
+            echo'<td>'.$row1['avg_points'].'</td>';
+          echo'</tr>';
+        ?>
         </table>
       </div>
       <div class="column">
