@@ -13,7 +13,6 @@
 
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <!-- <title>W3.CSS Template</title> -->
@@ -53,11 +52,29 @@ body, html {height: 100%}
             <th>Average Points</th>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <?php 
+        $pid = $_REQUEST['playerId'] ?? '';
+        $points = $_REQUEST['points'] ?? '';
+              
+        $sql = "UPDATE `player` SET avg_points = '".$points."' WHERE player_ID = '".$pid."'";
+
+        if(mysqli_query($link, $sql)){
+            //echo "<script type='text/javascript'>alert('".$points."');</script>";
+            $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$pid."";
+            $result1 = mysqli_query($link, $sql1);
+            $row1 = mysqli_fetch_array($result1);
+            
+            if(mysqli_query($link, $sql1)){
+                echo'<tr>';
+                    echo'<td>'.$row1['player_ID'].'</td>';
+                    echo'<td>'.$row1['name'].'</td>';
+                    echo'<td>'.$row1['position'].'</td>';
+                    echo'<td>'.$row1['team'].'</td>';
+                    echo'<td>'.$row1['avg_points'].'</td>';
+                echo'</tr>';
+            }
+        }
+        ?>
           </tr>
         </table>
       </div>

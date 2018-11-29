@@ -79,13 +79,27 @@ body, html {height: 100%}
                 <th>Team</th>
                 <th>Average Points</th>
               </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+            <?php 
+            $team = $_REQUEST['playerTeam'] ?? '';
+            $points = $_REQUEST['playerPoints'] ?? '';
+            $name = $_REQUEST['playerName'] ?? '';
+            $position = $_REQUEST['playerPosition'] ?? '';
+            $pid = $_REQUEST['playerId'] ?? '';
+            $sql = "INSERT INTO `player` (team, avg_points, name, position, player_ID) VALUES ('$team', '$points', '$name', '$position', '$pid')";  
+            if(mysqli_query($link, $sql)){
+              echo'<tr>';
+                echo'<td>'.$pid.'</td>';
+                echo'<td>'.$name.'</td>';
+                echo'<td>'.$position.'</td>';
+                echo'<td>'.$team.'</td>';
+                echo'<td>'.$points.'</td>';
+              echo'</tr>';
+            }else{
+                echo "<script type='text/javascript'>alert('That Player ID is already used. Try a different one.');
+                window.location='http://localhost/databaseProject/views/console.php';
+                </script>";
+            }
+            ?>
             </table>
       </div>
     </div>

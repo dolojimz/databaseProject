@@ -24,7 +24,6 @@ if(mysqli_query($link, $sql)){
         $_SESSION['loggedIn'] = true;
     
         //this redirects to the member homepage
-        echo "<script type='text/javascript'>alert('$UserName');</script>";
         
         header("location: http://localhost/databaseProject/views/console.php"); 
     }
