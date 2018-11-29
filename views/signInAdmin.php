@@ -26,7 +26,7 @@ if(mysqli_query($link, $sql)){
         //this redirects to the member homepage
         echo "<script type='text/javascript'>alert('$UserName');</script>";
         
-        header("location: http://localhost/databaseProject/views/index.php"); 
+        header("location: http://localhost/databaseProject/views/console.php"); 
     }
     else{
         echo "Wrong Credentials";
