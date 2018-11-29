@@ -57,35 +57,51 @@ body, html {height: 100%}
         $points = $_REQUEST['points'] ?? '';
               
         $sql = "UPDATE `player` SET avg_points = '".$points."' WHERE player_ID = '".$pid."'";
+        
+            if(mysqli_query($link, $sql)){
+                //echo "<script type='text/javascript'>alert('".$points."');</script>";
+                $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$pid."";
+                $result1 = mysqli_query($link, $sql1);
+                $row1 = mysqli_fetch_array($result1);
 
-        if(mysqli_query($link, $sql)){
-            //echo "<script type='text/javascript'>alert('".$points."');</script>";
-            $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$pid."";
-            $result1 = mysqli_query($link, $sql1);
-            $row1 = mysqli_fetch_array($result1);
-            
-            if(mysqli_query($link, $sql1)){
-                echo'<tr>';
-                    echo'<td>'.$row1['player_ID'].'</td>';
-                    echo'<td>'.$row1['name'].'</td>';
-                    echo'<td>'.$row1['position'].'</td>';
-                    echo'<td>'.$row1['team'].'</td>';
-                    echo'<td>'.$row1['avg_points'].'</td>';
-                echo'</tr>';
-            }
-        }
+                if(mysqli_query($link, $sql1)){
+                    echo'<tr>';
+                        echo'<td>'.$row1['player_ID'].'</td>';
+                        echo'<td>'.$row1['name'].'</td>';
+                        echo'<td>'.$row1['position'].'</td>';
+                        echo'<td>'.$row1['team'].'</td>';
+                        echo'<td>'.$row1['avg_points'].'</td>';
+                    echo'</tr>';
+                }
+            } 
+        
         ?>
           </tr>
         </table>
       </div>
       <div class="column" style="background-color:rgba(0, 0, 0, 0.7);">
           <h3><b>Add Player</b></h2>
-              <form action="consoleAdd.php">
-                  <input type="text" placeholder="Player ID" name="playerId"><br>
+              <form action="consoleAdd.php" id = "info">
+                  <input type="number" step = "1" placeholder="Player ID" name="playerId"><br>
                   <input type="text" placeholder="Player Name" name="playerName"><br>
-                  <input type="text" placeholder="Player Position" name="playerPosition"><br>
-                  <input type="text" placeholder="Player Team" name="playerTeam"><br>
-                  <input type="text" placeholder="Player Avg Points" name="playerPoints"><br>
+                  
+                    <select placeholder="Position" name="playerPosition" form="info">
+                      <option value="K">K</option>
+                      <option value="WR">WR</option>
+                      <option value="QB">QB</option>
+                      <option value="defense">Defense</option>
+                      <option value="RB">RB</option>
+                    </select>
+                  
+                    <select placeholder="Position" name="playerTeam" form="info">
+                      <option value="Redskins">Redskins</option>
+                      <option value="Cowgirls">Cowgirls</option>
+                      <option value="Raiders">Raiders</option>
+                      <option value="Jets">Jets</option>
+                      <option value="Texans">Texans</option>
+                    </select>
+                                    
+                  <input type="number" placeholder="Player Avg Points" name="playerPoints"><br>
                   <button type="submit">Add Player</button>
               </form>
               <table>

@@ -145,8 +145,14 @@ body, html {height: 100%}
                   <input type="text" placeholder="ID" name="ID" required><br>
                   <button type="submit">Search ID</button>
               </form>
-              <form action="indexPos.php">
-                  <input type="text" placeholder="Position" name="position" required><br>
+              <form action="indexPos.php" id = "pos">
+                    <select placeholder="Position" name="position" form="pos">
+                      <option value="K">K</option>
+                      <option value="WR">WR</option>
+                      <option value="QB">QB</option>
+                      <option value="defense">Defense</option>
+                      <option value="RB">RB</option>
+                    </select>
                   <button type="submit">Search Position</button>
               </form>
               <table>

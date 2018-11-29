@@ -63,7 +63,6 @@ body, html {height: 100%}
               
         //https://stackoverflow.com/questions/8088516/check-sql-database-if-value-exists-and-then-return-value-if-it-does
         if($resultA = mysqli_query($link, $sqlA) && mysql_num_rows($resultA) > 0){
-            echo "<script type='text/javascript'>alert('hey');</script>";
             $conf = "East";
             if($rowM['position'] == "kicker"){
                 $sql = "INSERT INTO `fantasy_team` (team_name, kicker, username, conf_name) VALUES ('$UserName', '$add', '$UserName', '$conf')";
@@ -290,8 +289,14 @@ body, html {height: 100%}
                   <input type="text" placeholder="ID" name="ID" required><br>
                   <button type="submit">Search ID</button>
               </form>
-              <form action="indexPos.php">
-                  <input type="text" placeholder="Position" name="position" required><br>
+              <form action="indexPos.php" id = "pos">
+                    <select placeholder="Position" name="position" form="pos">
+                      <option value="K">K</option>
+                      <option value="WR">WR</option>
+                      <option value="QB">QB</option>
+                      <option value="defense">Defense</option>
+                      <option value="RB">RB</option>
+                    </select>
                   <button type="submit">Search Position</button>
               </form>
               <table>

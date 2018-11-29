@@ -63,12 +63,27 @@ body, html {height: 100%}
       </div>
       <div class="column" style="background-color:rgba(0, 0, 0, 0.7);">
           <h3><b>Add Player</b></h2>
-              <form action="consoleAdd.php">
-                  <input type="text" placeholder="Player ID" name="playerId"><br>
+              <form action="consoleAdd.php" id = "info">
+                  <input type="number" step = "1" placeholder="Player ID" name="playerId"><br>
                   <input type="text" placeholder="Player Name" name="playerName"><br>
-                  <input type="text" placeholder="Player Position" name="playerPosition"><br>
-                  <input type="text" placeholder="Player Team" name="playerTeam"><br>
-                  <input type="text" placeholder="Player Avg Points" name="playerPoints"><br>
+                  
+                    <select placeholder="Position" name="playerPosition" form="info">
+                      <option value="K">K</option>
+                      <option value="WR">WR</option>
+                      <option value="QB">QB</option>
+                      <option value="defense">Defense</option>
+                      <option value="RB">RB</option>
+                    </select>
+                  
+                    <select placeholder="Position" name="playerTeam" form="info">
+                      <option value="Redskins">Redskins</option>
+                      <option value="Cowgirls">Cowgirls</option>
+                      <option value="Raiders">Raiders</option>
+                      <option value="Jets">Jets</option>
+                      <option value="Texans">Texans</option>
+                    </select>
+                                    
+                  <input type="number" placeholder="Player Avg Points" name="playerPoints"><br>
                   <button type="submit">Add Player</button>
               </form>
               <table>
