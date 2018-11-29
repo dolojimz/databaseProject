@@ -74,6 +74,30 @@ img.avatar {
     background-color:#f1f1f1;
 }
 
+.container3 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 16px;
+    background-color:#f1f1f1;
+}
+
+.container4 {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 16px;
+    background-color:#f1f1f1;
+}
+
 /* .container2 {
     position: fixed;
     bottom: 0;
@@ -115,6 +139,13 @@ span.psw {
 }
 
 table, th, td {
-    border: 1px solid red;
+    border: 1px solid #38434c;
+    padding: 5px;
     border-collapse: collapse;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

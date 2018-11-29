@@ -3,7 +3,7 @@
     server with default setting (user 'root' with no password) */
 
     session_start();
-    
+
 
     $link = mysqli_connect("localhost", "root", "", "fantasy");
 
@@ -33,9 +33,9 @@ body, html {height: 100%}
 }
 </style> -->
 
-<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+<div class="bgimg w3-display-container w3-animate-opacity ">
     <h1 align="center"><b>Admin Page</b></h1>
-    <div class="container3">
+    <div class="container4">
   <div class="row">
       <div class="column">
           <h3><b>Update Player</b></h3>
