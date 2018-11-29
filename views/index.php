@@ -136,13 +136,13 @@ body, html {height: 100%}
       </div>
       <div class="column">
           <h3><b>Search Players</b></h2>
-              <form action="/action_page.php">
-                  <input type="text" placeholder="ID" name="id"><br>
-                  <input type="submit" value="Search ID">
+              <form action="indexID.php">
+                  <input type="text" placeholder="ID" name="ID" required><br>
+                  <button type="submit">Search ID</button>
               </form>
-              <form action="/action_page.php">
-                  <input type="text" placeholder="Position" name="position"><br>
-                  <input type="submit" value="Search Position">
+              <form action="indexPos.php">
+                  <input type="text" placeholder="Position" name="position" required><br>
+                  <button type="submit">Search Position</button>
               </form>
               <table>
               <tr>
@@ -160,7 +160,7 @@ body, html {height: 100%}
                 <td>{Info}</td>
               </tr>
             </table>
-            <form action="/action_page.php">
+            <form action="indexSort.php">
                 <input type="submit" value="Sort Players">
             </form>
       </div>
