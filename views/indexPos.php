@@ -151,6 +151,7 @@ body, html {height: 100%}
                 <th>Position</th>
                 <th>Team</th>
                 <th>Average Points</th>
+                <th>Add</th>
               </tr>
                   
               <?php
@@ -158,7 +159,7 @@ body, html {height: 100%}
                 $pos = $_REQUEST['position'] ?? '';
 
 
-                $sql1 = "SELECT * FROM `player` WHERE position = '".$pos."'";
+                $sql1 = "SELECT * FROM `player` WHERE position = '".$pos."' ORDER BY avg_points DESC";
                 $result1 = mysqli_query($link, $sql1);
                   
                 while($row1 = mysqli_fetch_array($result1)){
@@ -168,14 +169,16 @@ body, html {height: 100%}
                     echo'<td>'.$row1['position'].'</td>';
                     echo'<td>'.$row1['team'].'</td>';
                     echo'<td>'.$row1['avg_points'].'</td>';
+                    echo '<td><form action="indexAdd.php">
+                        <input type="hidden" id="ADD" name="ADD" value='.$row1['player_ID'].'><br>
+                        <button type="submit">Add</button>
+                    </form></td>';
                   echo'</tr>';
                 }
                 
                 ?>
             </table>
-            <form action="idexSort.php">
-                <input type="submit" value="Sort Players">
-            </form>
+
       </div>
     </div>
 </div>

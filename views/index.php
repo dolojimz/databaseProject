@@ -153,16 +153,14 @@ body, html {height: 100%}
                 <th>Average Points</th>
               </tr>
               <tr>
-                <td>{Info}</td>
-                <td>{Info}</td>
-                <td>{Info}</td>
-                <td>{Info}</td>
-                <td>{Info}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
             </table>
-            <form action="indexSort.php">
-                <input type="submit" value="Sort Players">
-            </form>
+
       </div>
     </div>
 </div>
