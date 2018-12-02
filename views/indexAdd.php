@@ -58,13 +58,14 @@ body, html {height: 100%}
         $rowM = mysqli_fetch_array($resultM);
               
         
-        $sqlA = "SELECT * FROM `fantasy_team` WHERE player_ID = ".$UserName."";
+        $sqlA = "SELECT * FROM `fantasy_team` WHERE username = '".$UserName."'";
 
               
         //https://stackoverflow.com/questions/8088516/check-sql-database-if-value-exists-and-then-return-value-if-it-does
-        if($resultA = mysqli_query($link, $sqlA) && mysql_num_rows($resultA) > 0){
-            $conf = "East";
-            if($rowM['position'] == "kicker"){
+        $resultA = mysqli_query($link, $sqlA);
+        if(mysqli_fetch_array($resultA) == false){
+        $conf = "East";
+            if($rowM['position'] == "K"){
                 $sql = "INSERT INTO `fantasy_team` (team_name, kicker, username, conf_name) VALUES ('$UserName', '$add', '$UserName', '$conf')";
                 $resultN = mysqli_query($link, $sql);
               echo'<tr>';
@@ -132,7 +133,7 @@ body, html {height: 100%}
             $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$row['kicker']."";
 
               
-        if($rowM['position'] == "kicker"){
+        if($rowM['position'] == "K"){
             $sql = "UPDATE`fantasy_team` SET kicker = '".$add."' WHERE username = '".$UserName."'";
             $result = mysqli_query($link, $sql);
             $sql1 = "SELECT * FROM `player` WHERE player_ID = ".$add."";
